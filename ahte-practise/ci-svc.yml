@@ -3,7 +3,7 @@ kind: Pod
 metadata: 
   name: nginxpodci
   labels:
-    app: nginxci
+    app: nginxpodci
 spec:
   containers:
     - name: mynginxcontainer
@@ -21,7 +21,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-      app: nginxci
+      app: nginxpodci
   ports:
     - protocol: TCP
       port: 80
