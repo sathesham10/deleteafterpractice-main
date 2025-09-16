@@ -9,7 +9,7 @@ spec:
     - name: mynginxcontainer
       image: nginx:latest
       ports:
-        - containerPort: 80
+      - containerPort: 80
 
 ---
 apiVersion: v1
