@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: demo.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: clusteripsrv
+            port:
+              number: 80 
+      - path: /student
+        pathType: Prefix
+        backend:
+          service:
+            name: clusteripsrvmob
+            port:
+              number: 8080
+        
+

@@ -1,0 +1,31 @@
+apiVersion: v1 
+#its the manual of your object/manifes file , ensures everything is manged
+#as per the apiversion library , it ensures the creation of object as well.
+kind: Pod 
+metadata: 
+        "name": anup
+spec: 
+    containers:
+          - image: nginx:latest
+            name: nginxpod
+            resources: 
+                requests:
+                  cpu: "10m"
+                  memory: "12Mi" 
+            ports:  
+              -  name: http
+                 containerPort: 80
+                 protocol: TCP
+          - image: tomcat:latest
+            name: tomcatpod
+            resources: 
+                requests:
+                  cpu: "10m"
+                  memory: "12Mi" 
+            ports:  
+              -  name: custom
+                 containerPort: 8080
+                 protocol: TCP
+                 
+                 #1 core = 1000 milicores
+                 #1gb = 1024 mb

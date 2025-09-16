@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+metadata:
+  name: hpadaemon
+  labels:
+    app: hpadaemon
+kind: Deployment
+spec:
+  replicas: 2 #desiredstate
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: deployapp
+  template:
+    metadata:
+      labels:
+        app: deployapp
+    spec:
+      containers:
+      - name: frontendapp
+        image: anupdudhe/frontendrds
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "60m"
+          limits:
+            memory: "64Mi"
+            cpu: "120m"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hpadaemon
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 95
+
+#        - type: Resource
+#          resource:
+#            name: memory
+#            targetAverageUtilization: 50                    
+
+#kubectl exec -i -t hpadaemon-9d867fc4-nk795 --container frontendapp -- /bin/bash 
+
+
+#timeout 300 sh -c "while :; do :; done"
