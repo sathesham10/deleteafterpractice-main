@@ -3,11 +3,11 @@ kind: Pod
 metadata: 
   name: nginxpod
   labels:
-  app: nginx-app
+    app: nginx-app
 
 spec:
   containers:
-  - name: mynginxxontainer
-  image: nginx:latest
-  ports:
-  - containerPort: 80
+    - name: mynginxxontainer
+      image: nginx:latest
+      ports:
+        - containerPort: 80
