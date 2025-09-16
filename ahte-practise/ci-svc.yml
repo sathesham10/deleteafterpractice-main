@@ -4,7 +4,6 @@ metadata:
   name: nginxpod-ci
   labels:
     app: nginxci
-
 spec:
   containers:
     - name: mynginxcontainer
@@ -18,13 +17,12 @@ metadata:
   name: nginx-Service
   labels:
     app: nginx-ci
-
 spec:
   type: ClusterIP
   selector:
-    app: nginxci
+      app: nginxci
   ports:
-    protocol: TCP
-    port: 80
-    targetPort: 80
+    - protocol: TCP
+      port: 80
+      targetPort: 80
 
