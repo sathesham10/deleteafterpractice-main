@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+        name: ss
+        labels:
+            app: ss
+spec:
+      replica: 3
+      template:
+        metadata:
+             name: ss
+             labels: 
+               app: ss
+        spec:
+            containers: 
+            - name: sspod-con
+              image: mysql:latest
+              resources:
+                  requests:
+                    cpu: "50m"
+                    memory: "90Mi"
+
+              ports:
+              - name: dbport 
+                dbport: 3306
+                protocol: TCP
+      selector:
+        matchLabels:
+          app: ss
