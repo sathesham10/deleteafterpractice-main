@@ -24,6 +24,18 @@ spec:
                   - name: dbport 
                     containerPort: 3306
                     protocol: TCP
+                env:
+                  - name: MYSQL_USER_NAME
+                    valueFrom:
+                        configMapKeyRef: 
+                          name: configmap1
+                          key: DB_USER
+                  - name: MYSQL_USER_NAME
+                    valueFrom:
+                        configMapKeyRef:
+                          name: configmap1
+                          key: MYSQL_ROOT_PASSWORD
+
       selector:
         matchLabels:
           app: ss
