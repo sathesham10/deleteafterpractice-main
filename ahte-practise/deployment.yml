@@ -19,7 +19,7 @@ spec:
         spec:
             containers:
               - name: dep-container
-                image: nginx
+                image: httpd
                 ports:
                 - containerPort: 80
                   protocol: TCP
