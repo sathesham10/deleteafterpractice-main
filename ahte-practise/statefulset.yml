@@ -13,17 +13,17 @@ spec:
                app: ss
         spec:
             containers: 
-            - name: sspod-con
-              image: mysql:latest
-              resources:
-                  requests:
-                    cpu: "50m"
-                    memory: "90Mi"
+              - name: sspod-con
+                image: mysql:latest
+                resources:
+                    requests:
+                      cpu: "50m"
+                      memory: "90Mi"
 
-              ports:
-              - name: dbport 
-                dbport: 3306
-                protocol: TCP
+                ports:
+                  - name: dbport 
+                    containerPort: 3306
+                    protocol: TCP
       selector:
         matchLabels:
           app: ss
