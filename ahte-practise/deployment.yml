@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+        name: studentapp
+        labels:
+          app: studentapp
+spec:
+    replicas:
+    strategy: 
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 2
+          maxUnavailable: 2
+    template:
+        metadata:
+            name: studentapp
+            labels:
+                  app: studentapp
+        spec:
+            containers:
+              - name: dep-container
+                image: nginx
+                ports:
+                  -containerPort: 80
+                  protocol: TCP
+    selector:
+        matchLabels:
+            app: studentapp
+
+
+
+
