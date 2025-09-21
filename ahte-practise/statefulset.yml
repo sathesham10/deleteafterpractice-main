@@ -5,9 +5,9 @@ metadata:
         labels:
             app: ss
 spec:
-      replica: 3
+      replicas: 3 #no of replica's you want to create on the basis of template
       template:
-        metadata:
+        metadata: #like a tag
              name: ss
              labels: 
                app: ss
