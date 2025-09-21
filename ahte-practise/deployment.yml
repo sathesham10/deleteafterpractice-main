@@ -5,12 +5,12 @@ metadata:
         labels:
           app: studentapp
 spec:
-    replicas:
+    replicas: 4
     strategy: 
         type: RollingUpdate
         rollingUpdate:
-          maxSurge: 2
-          maxUnavailable: 2
+          maxSurge: 1
+          maxUnavailable: 1
     template:
         metadata:
             name: studentapp
