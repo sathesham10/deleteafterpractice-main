@@ -41,5 +41,5 @@ spec:
         name: storage-volume
     volumes:
       - name: storage-volume
-        PersistentVolumeClaim:
+        persistentVolumeClaim:
           claimName: pvc-example
