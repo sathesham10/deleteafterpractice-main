@@ -1,0 +1,45 @@
+# 1. PersistentVolume (PV)
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+    name: pv-example
+spec:
+    capacity:
+      storage: 1Gi
+    accessModes:
+      - ReadWriteOnce
+    hostPath:
+      path: "/mnt/data" # Local path on the node
+
+---
+
+# 2. PersistentVolumeClaim (PVC)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: 
+    name: pvc-example
+spec:
+    accessModes:
+      - ReadWriteOnce
+    resource:
+      requests:
+        storage: 500Mi
+
+---
+
+# 3. Pod using the PVC
+apiVersion: v1
+kind: Pod
+metadata:
+    name: pod-using-pvc
+spec:
+    containers:
+    - name: myapp
+      image: nginx:latest
+      volumeMounts:
+      - mountPath: "/usr/share/nginx/html"
+        name: storage-volume
+    volumes:
+      - name: storage-volume
+        PersistentVolumeClaim:
+          claimName: pvc-example
