@@ -34,7 +34,7 @@ spec:
         app: deploymentapp
 --- 
 apiVersion: autoscaling/v2
-Kind: HorizontalPodAutoscaler
+kind: HorizontalPodAutoscaler
 metadata: 
     name: hpa1
     labels:
