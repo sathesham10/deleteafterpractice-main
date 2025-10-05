@@ -51,7 +51,7 @@ spec:
     resource:
       name: cpu
       target:
-        type: utilization #cpu utilization condition
+        type: Utilization #cpu utilization condition
         averageUtilization: 15 #cpu utilization threshold in %
 
 
